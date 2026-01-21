@@ -1,261 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Luhar (LHR) | BEP-20 Token</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Segoe UI, sans-serif;
+}
 
 body{
-    background:#0b0b0b;
-    color:#fff;
+  background:#0b0703;
+  color:#fff;
 }
 
 /* NAVBAR */
-nav{
-    position:fixed;
-    top:0;left:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(6px);
-    z-index:10;
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:#120900;
 }
 
-nav .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:22px;
-    font-weight:bold;
-    color:#f5b642;
+.nav-logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:bold;
+  color:gold;
 }
 
-nav .logo img{
-    width:42px;
-    height:42px;
-    border-radius:50%;
+.nav-logo img{
+  height:42px;
 }
 
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:25px;
+nav a{
+  margin-left:18px;
+  color:#fff;
+  text-decoration:none;
 }
 
-nav ul li a{
-    color:#fff;
-    text-decoration:none;
-    font-weight:500;
+.btn{
+  background:linear-gradient(45deg,#ffcc00,#ff9900);
+  color:#000;
+  padding:8px 16px;
+  border-radius:6px;
+  font-weight:bold;
 }
 
-.buy-btn{
-    background:linear-gradient(45deg,#ffb347,#ffcc33);
-    padding:10px 20px;
-    border-radius:20px;
-    color:#000;
-    font-weight:bold;
-    text-decoration:none;
+.btn-outline{
+  border:2px solid gold;
+  padding:8px 16px;
+  border-radius:6px;
+  color:gold;
 }
 
 /* HERO */
 .hero{
-    min-height:100vh;
-    background:
-      linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-      url('hero-bg.jpg') center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    padding:120px 60px 60px;
-}
-
-.hero-content{
-    max-width:600px;
+  background:radial-gradient(circle at top,#ffae00,#0b0703);
+  padding:120px 20px;
+  text-align:center;
 }
 
 .hero h1{
-    font-size:64px;
-    color:#ffb347;
-    margin-bottom:15px;
+  font-size:70px;
+  color:gold;
 }
 
 .hero p{
-    font-size:20px;
-    margin-bottom:30px;
+  font-size:22px;
+  margin:15px 0;
 }
 
-.hero .buttons a{
-    margin-right:15px;
-    padding:12px 26px;
-    border-radius:25px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.hero .buy{
-    background:linear-gradient(45deg,#ffb347,#ffcc33);
-    color:#000;
-}
-
-.hero .community{
-    border:2px solid #ffb347;
-    color:#ffb347;
+.hero-btns{
+  margin-top:25px;
+  display:flex;
+  gap:20px;
+  justify-content:center;
 }
 
 /* SECTIONS */
-section{
-    padding:80px 60px;
+.section{
+  padding:80px 20px;
+  text-align:center;
 }
 
-.section-title{
-    text-align:center;
-    font-size:38px;
-    color:#ffb347;
-    margin-bottom:40px;
+.section.dark{
+  background:#120900;
 }
 
-/* ABOUT */
-.about{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:center;
+.section h2{
+  color:gold;
+  margin-bottom:20px;
 }
 
-.about img{
-    width:100%;
-    max-width:420px;
-    border-radius:50%;
+/* TOKEN */
+.token-grid{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
 }
 
-/* TOKEN INFO */
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
+.token-box{
+  background:#1a0f00;
+  padding:20px;
+  border-radius:10px;
 }
 
-.card{
-    background:rgba(255,255,255,0.06);
-    padding:25px;
-    border-radius:18px;
+.token-box span{
+  color:gold;
+  font-size:18px;
 }
 
-.card h3{
-    color:#ffb347;
-    margin-bottom:10px;
+.center-btn{
+  margin-top:30px;
 }
 
 /* ROADMAP */
 .roadmap{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:25px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
 }
 
 .phase{
-    background:rgba(255,255,255,0.06);
-    padding:25px;
-    border-radius:18px;
+  width:260px;
+  background:#1a0f00;
+  padding:20px;
+  border-radius:10px;
 }
 
 .phase h3{
-    color:#ffb347;
-    margin-bottom:10px;
+  color:gold;
+  margin-bottom:10px;
+}
+
+.phase ul{
+  list-style:none;
+}
+
+.phase li{
+  margin:6px 0;
+}
+
+/* COMMUNITY */
+.social{
+  display:flex;
+  justify-content:center;
+  gap:20px;
 }
 
 /* FOOTER */
 footer{
-    background:#000;
-    text-align:center;
-    padding:30px;
-    color:#aaa;
+  background:#0b0703;
+  padding:20px;
+  text-align:center;
+  color:#aaa;
+  font-size:14px;
 }
-</style>
-</head>
-
-<body>
-
-<nav>
-    <div class="logo">
-        <img src="logo.png">
-        LUHAR
-    </div>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#token">Token Info</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-    </ul>
-    <a class="buy-btn" target="_blank"
-       href="https://pancakeswap.finance/swap?outputCurrency=0xFC354400Ca083F0C5bB2e7972B5D2C66F25dA461">
-       BUY TOKEN
-    </a>
-</nav>
-
-<div class="hero">
-    <div class="hero-content">
-        <h1>LUHAR</h1>
-        <p>Forged with Strength. Built for the Future.</p>
-        <div class="buttons">
-            <a class="buy" target="_blank"
-               href="https://pancakeswap.finance/swap?outputCurrency=0xFC354400Ca083F0C5bB2e7972B5D2C66F25dA461">
-               BUY TOKEN
-            </a>
-            <a class="community" href="#">JOIN COMMUNITY</a>
-        </div>
-    </div>
-</div>
-
-<section id="about">
-    <h2 class="section-title">ABOUT LUHAR</h2>
-    <div class="about">
-        <div>
-            <p>
-            LUHAR is a community-driven BEP-20 token inspired by strength,
-            hard work, and trust. It represents builders, creators,
-            and believers in decentralized finance.
-            </p>
-        </div>
-        <img src="logo.png">
-    </div>
-</section>
-
-<section id="token">
-    <h2 class="section-title">TOKEN DETAILS</h2>
-    <div class="cards">
-        <div class="card"><h3>Name</h3>Luhar</div>
-        <div class="card"><h3>Symbol</h3>LHR</div>
-        <div class="card"><h3>Network</h3>BNB Smart Chain (BEP-20)</div>
-        <div class="card"><h3>Decimals</h3>18</div>
-    </div>
-</section>
-
-<section id="roadmap">
-    <h2 class="section-title">ROADMAP</h2>
-    <div class="roadmap">
-        <div class="phase">
-            <h3>Phase 1</h3>
-            Token Launch<br>Website Live<br>Community Build
-        </div>
-        <div class="phase">
-            <h3>Phase 2</h3>
-            Liquidity Addition<br>Marketing<br>Listings
-        </div>
-        <div class="phase">
-            <h3>Phase 3</h3>
-            Partnerships<br>Utility Development
-        </div>
-    </div>
-</section>
-
-<footer>
-© 2025 LUHAR | This website is for informational purposes only.
-</footer>
-
-</body>
-</html>

@@ -1,161 +1,112 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Segoe UI, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUHAR Coin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-body{
-  background:#0b0703;
-  color:#fff;
-}
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-logo">
+    <img src="images/logo.png">
+    <span>LUHAR</span>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#token">Token Info</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#community">Community</a>
+    <a href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=BNB&inputCurrency=0xcF354400CA883F0C5bB2e7972B5D2606F25EdA61"
+       target="_blank" class="btn">Buy Token</a>
+  </nav>
+</header>
 
-/* NAVBAR */
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 40px;
-  background:#120900;
-}
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1>LUHAR</h1>
+    <p>Forged with Strength. Built for the Future.</p>
+    <div class="hero-btns">
+      <a href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=BNB&inputCurrency=0xcF354400CA883F0C5bB2e7972B5D2606F25EdA61"
+         target="_blank" class="btn">Buy Token</a>
+      <a href="#community" class="btn-outline">Join Community</a>
+    </div>
+  </div>
+</section>
 
-.nav-logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:22px;
-  font-weight:bold;
-  color:gold;
-}
+<!-- ABOUT -->
+<section id="about" class="section">
+  <h2>About LUHAR</h2>
+  <p>
+    LUHAR is a community-driven crypto token inspired by strength,
+    hard work, and trust. Built for builders, creators,
+    and believers in decentralized finance.
+  </p>
+</section>
 
-.nav-logo img{
-  height:42px;
-}
+<!-- TOKEN INFO -->
+<section id="token" class="section dark">
+  <h2>Token Details</h2>
+  <div class="token-grid">
+    <div class="token-box">Token Name<br><span>LUHAR</span></div>
+    <div class="token-box">Symbol<br><span>LHR</span></div>
+    <div class="token-box">Network<br><span>BNB Smart Chain (BEP-20)</span></div>
+    <div class="token-box">Decimals<br><span>18</span></div>
+    <div class="token-box">Total Supply<br><span>100,000,000</span></div>
+  </div>
 
-nav a{
-  margin-left:18px;
-  color:#fff;
-  text-decoration:none;
-}
+  <div class="center-btn">
+    <a href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=BNB&inputCurrency=0xcF354400CA883F0C5bB2e7972B5D2606F25EdA61"
+       target="_blank" class="btn">Buy on PancakeSwap</a>
+  </div>
+</section>
 
-.btn{
-  background:linear-gradient(45deg,#ffcc00,#ff9900);
-  color:#000;
-  padding:8px 16px;
-  border-radius:6px;
-  font-weight:bold;
-}
+<!-- ROADMAP -->
+<section id="roadmap" class="section">
+  <h2>Roadmap</h2>
+  <div class="roadmap">
+    <div class="phase">
+      <h3>Phase 1</h3>
+      <ul>
+        <li>Token Launch</li>
+        <li>Website Live</li>
+        <li>Community Build</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Phase 2</h3>
+      <ul>
+        <li>Liquidity Addition</li>
+        <li>Marketing</li>
+        <li>Listings</li>
+      </ul>
+    </div>
+    <div class="phase">
+      <h3>Phase 3</h3>
+      <ul>
+        <li>Partnerships</li>
+        <li>Utility Development</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-.btn-outline{
-  border:2px solid gold;
-  padding:8px 16px;
-  border-radius:6px;
-  color:gold;
-}
+<!-- COMMUNITY -->
+<section id="community" class="section dark">
+  <h2>Join LUHAR Community</h2>
+  <div class="social">
+    <a href="#" class="btn">Telegram</a>
+    <a href="#" class="btn-outline">Twitter</a>
+  </div>
+</section>
 
-/* HERO */
-.hero{
-  background:radial-gradient(circle at top,#ffae00,#0b0703);
-  padding:120px 20px;
-  text-align:center;
-}
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 LUHAR. This website is for informational purposes only.</p>
+</footer>
 
-.hero h1{
-  font-size:70px;
-  color:gold;
-}
-
-.hero p{
-  font-size:22px;
-  margin:15px 0;
-}
-
-.hero-btns{
-  margin-top:25px;
-  display:flex;
-  gap:20px;
-  justify-content:center;
-}
-
-/* SECTIONS */
-.section{
-  padding:80px 20px;
-  text-align:center;
-}
-
-.section.dark{
-  background:#120900;
-}
-
-.section h2{
-  color:gold;
-  margin-bottom:20px;
-}
-
-/* TOKEN */
-.token-grid{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:20px;
-}
-
-.token-box{
-  background:#1a0f00;
-  padding:20px;
-  border-radius:10px;
-}
-
-.token-box span{
-  color:gold;
-  font-size:18px;
-}
-
-.center-btn{
-  margin-top:30px;
-}
-
-/* ROADMAP */
-.roadmap{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:30px;
-}
-
-.phase{
-  width:260px;
-  background:#1a0f00;
-  padding:20px;
-  border-radius:10px;
-}
-
-.phase h3{
-  color:gold;
-  margin-bottom:10px;
-}
-
-.phase ul{
-  list-style:none;
-}
-
-.phase li{
-  margin:6px 0;
-}
-
-/* COMMUNITY */
-.social{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-}
-
-/* FOOTER */
-footer{
-  background:#0b0703;
-  padding:20px;
-  text-align:center;
-  color:#aaa;
-  font-size:14px;
-}
+</body>
+</html>

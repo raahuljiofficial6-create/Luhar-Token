@@ -1,17 +1,11 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:Poppins,sans-serif;
   background:radial-gradient(circle at top,#2a1400,#050201);
   color:#f7d28a;
-  overflow-x:hidden;
 }
 
-/* NAV */
 .nav{
   display:flex;
   justify-content:space-between;
@@ -22,7 +16,6 @@ body{
 .brand{
   font-family:Cinzel,serif;
   font-size:32px;
-  font-weight:800;
   color:#ffb300;
 }
 
@@ -30,7 +23,6 @@ body{
   margin-left:25px;
   text-decoration:none;
   color:#f7d28a;
-  font-weight:500;
 }
 
 .nav .buy{
@@ -41,7 +33,6 @@ body{
   font-weight:700;
 }
 
-/* HERO */
 .hero{
   display:flex;
   justify-content:space-between;
@@ -59,45 +50,30 @@ body{
 .hero-left p{
   margin:18px 0 35px;
   font-size:20px;
-  opacity:0.9;
 }
 
-.hero-btns .btn{
-  margin-right:15px;
-}
-
-.hero-right{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* LOGO PREMIUM */
-.logo-orbit{
-  width:340px;
-  height:340px;
+.logo-glow{
+  width:320px;
+  height:320px;
   border-radius:50%;
-  background:
-    radial-gradient(circle,#ffd180 0%,#ff9800 35%,#6d2600 65%,transparent 70%);
   display:flex;
   justify-content:center;
   align-items:center;
+  background:radial-gradient(circle,#ffb30055 30%,transparent 65%);
   box-shadow:
-    0 0 60px rgba(255,170,0,.7),
-    0 0 120px rgba(255,140,0,.6),
-    inset 0 0 40px rgba(0,0,0,.8);
-  animation:rotateGlow 8s linear infinite;
+    0 0 40px rgba(255,180,0,.6),
+    0 0 90px rgba(255,140,0,.7),
+    inset 0 0 30px rgba(0,0,0,.9);
 }
 
-.logo-orbit img{
+.logo-glow img{
   width:72%;
   height:72%;
   object-fit:contain;
   border-radius:50%;
-  background:transparent;
 }
 
-/* BUTTONS */
+/* Buttons */
 .btn{
   padding:14px 30px;
   border-radius:35px;
@@ -115,7 +91,7 @@ body{
   color:#ffb300;
 }
 
-/* SECTIONS */
+/* Sections */
 .section{
   padding:90px 60px;
   text-align:center;
@@ -125,23 +101,14 @@ body{
   font-family:Cinzel,serif;
   font-size:42px;
   color:#ffb300;
-  margin-bottom:20px;
 }
 
-.desc{
-  max-width:800px;
-  margin:auto;
-  opacity:.85;
-}
-
-/* GLASS */
 .glass{
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(14px);
   border-radius:25px;
 }
 
-/* TOKEN */
 .token-box{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -154,18 +121,6 @@ body{
   border-radius:14px;
 }
 
-.token-box span{
-  display:block;
-  opacity:.6;
-  font-size:13px;
-}
-
-.contract small{
-  word-break:break-all;
-  font-size:12px;
-}
-
-/* ROADMAP */
 .roadmap{
   display:flex;
   justify-content:center;
@@ -182,20 +137,8 @@ body{
   transform:translateY(40px);
 }
 
-.card h3{
-  color:#ffb300;
-  margin-bottom:12px;
-}
-
-/* FOOTER */
 footer{
   text-align:center;
   padding:30px;
   opacity:.7;
-}
-
-/* ANIMATIONS */
-@keyframes rotateGlow{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
 }

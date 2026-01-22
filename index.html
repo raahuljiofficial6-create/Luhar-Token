@@ -4,137 +4,148 @@
   <meta charset="UTF-8" />
   <title>LUHAR Coin | Official</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Existing CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <header class="nav">
-    <div class="brand">LUHAR</div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#token">Token</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#community">Community</a>
-      <a class="buy" href="https://pancakeswap.finance/swap" target="_blank">BUY TOKEN</a>
-    </nav>
-  </header>
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="brand">LUHAR</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#token">Token</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#community">Community</a>
+    <a class="buy" href="https://pancakeswap.finance/swap" target="_blank">BUY TOKEN</a>
+  </nav>
+</header>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section class="hero">
+<!-- ===== HERO (CENTER + BIG LOGO) ===== -->
+<section class="hero" style="
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+">
 
-    <!-- LEFT CONTENT -->
-    <div class="hero-left">
-      <h1>LUHAR</h1>
-      <p>Forged with Strength. Built for the Future.</p>
+  <h1 style="margin-bottom:10px;">LUHAR</h1>
+  <p style="max-width:600px;">
+    Forged with Strength. Built for the Future.
+  </p>
 
-      <div class="hero-btns">
-        <a href="https://pancakeswap.finance/swap" target="_blank" class="btn gold">
-          Buy Token
-        </a>
-        <a href="#community" class="btn outline">
-          Join Community
-        </a>
+  <!-- BIG CENTER LOGO -->
+  <img
+    src="images/logo.png"
+    alt="LUHAR Logo"
+    style="
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      margin: 30px auto;
+      display: block;
+      box-shadow: none;
+      filter: none;
+      animation: none;
+    "
+  />
+
+  <div class="hero-btns">
+    <a href="https://pancakeswap.finance/swap" target="_blank" class="btn gold">
+      Buy Token
+    </a>
+    <a href="#community" class="btn outline">
+      Join Community
+    </a>
+  </div>
+
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <h2>About LUHAR</h2>
+  <p>
+    LUHAR is a BEP-20 community-driven crypto project inspired by builders,
+    strength, trust, and long-term value creation.
+  </p>
+</section>
+
+<!-- ===== TOKEN INFO ===== -->
+<section id="token" class="section">
+  <h2>Token Information</h2>
+
+  <div class="token-box">
+
+    <div><span>Name</span><b>LUHAR</b></div>
+    <div><span>Symbol</span><b>LHR</b></div>
+    <div><span>Network</span><b>BNB Smart Chain (BEP-20)</b></div>
+    <div><span>Decimals</span><b>18</b></div>
+    <div><span>Total Supply</span><b>1,000,000 LHR</b></div>
+
+    <!-- FIXED CONTRACT ADDRESS -->
+    <div style="
+      margin-top:20px;
+      padding:15px;
+      background: rgba(255,255,255,0.08);
+      border-radius:12px;
+      text-align:center;
+      word-break: break-all;
+    ">
+      <div style="font-weight:600; margin-bottom:6px;">
+        Contract Address
       </div>
+      <small>
+        0xF354400CA883FC5Bb2e7972B5D2606F25EdA61
+      </small>
     </div>
 
-    <!-- RIGHT LOGO (FIXED) -->
-    <div class="hero-right">
+  </div>
+</section>
 
-      <!-- 🔧 FIXED LOGO -->
-      <img
-        src="images/logo.png"
-        alt="LUHAR Logo"
-        style="
-          width: 300px;
-          height: 300px;
-          border-radius: 50%;
-          display: block;
-          margin: auto;
-          box-shadow: none;
-          filter: none;
-          animation: none;
-        "
-      />
+<!-- ===== ROADMAP ===== -->
+<section id="roadmap" class="section">
+  <h2>Roadmap</h2>
 
+  <div class="roadmap">
+    <div class="card">
+      <h3>Phase 1</h3>
+      <ul>
+        <li>Token Launch</li>
+        <li>Website Release</li>
+        <li>Community Building</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="section">
-    <h2>About LUHAR</h2>
-    <p>
-      LUHAR is a BEP-20 community-driven crypto project inspired by builders,
-      strength, trust, and long-term value creation.
-    </p>
-  </section>
-
-  <!-- ===== TOKEN INFO ===== -->
-  <section id="token" class="section">
-    <h2>Token Information</h2>
-
-    <div class="token-box">
-      <div><span>Name</span><b>LUHAR</b></div>
-      <div><span>Symbol</span><b>LHR</b></div>
-      <div><span>Network</span><b>BNB Smart Chain (BEP-20)</b></div>
-      <div><span>Decimals</span><b>18</b></div>
-      <div><span>Total Supply</span><b>1,000,000 LHR</b></div>
-
-      <div class="contract">
-        <span>Contract Address</span>
-        <small>0xF354400CA883FC5Bb2e7972B5D2606F25EdA61</small>
-      </div>
+    <div class="card">
+      <h3>Phase 2</h3>
+      <ul>
+        <li>Liquidity Lock</li>
+        <li>Marketing Push</li>
+        <li>Exchange Listings</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- ===== ROADMAP ===== -->
-  <section id="roadmap" class="section">
-    <h2>Roadmap</h2>
-
-    <div class="roadmap">
-
-      <div class="card">
-        <h3>Phase 1</h3>
-        <ul>
-          <li>Token Launch</li>
-          <li>Website Release</li>
-          <li>Community Building</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Phase 2</h3>
-        <ul>
-          <li>Liquidity Lock</li>
-          <li>Marketing Push</li>
-          <li>Exchange Listings</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Phase 3</h3>
-        <ul>
-          <li>Partnerships</li>
-          <li>Utility Development</li>
-          <li>Global Expansion</li>
-        </ul>
-      </div>
-
+    <div class="card">
+      <h3>Phase 3</h3>
+      <ul>
+        <li>Partnerships</li>
+        <li>Utility Development</li>
+        <li>Global Expansion</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer id="community">
-    <p>© 2026 LUHAR — Official BEP-20 Project</p>
-    <p>
-      <a href="https://x.com/LuharCoin" target="_blank">X (Twitter)</a>
-    </p>
-  </footer>
+<!-- ===== FOOTER ===== -->
+<footer id="community">
+  <p>© 2026 LUHAR — Official BEP-20 Project</p>
+  <p>
+    <a href="https://x.com/LuharCoin" target="_blank">X (Twitter)</a>
+  </p>
+</footer>
 
-  <!-- Existing JS -->
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -5,31 +5,27 @@
   <title>LUHAR Coin (LHR)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
   <!-- HERO SECTION -->
-  <section class="hero container">
-    <img src="images/logo.png" alt="Luhar Coin Logo" class="logo" />
+  <section class="hero">
+    <div class="container reveal">
+      <img src="images/logo.png" alt="LUHAR Logo" class="logo floating" />
 
-    <h1 class="title">LUHAR</h1>
-    <p class="subtitle">Forged with Strength. Built for the Future.</p>
+      <h1 class="title glow">LUHAR</h1>
+      <p class="tagline">Forged with Strength. Built for the Future.</p>
 
-    <a
-      href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=BNB&inputCurrency=0xcF354400CA883F0C5bB2e7972B5D2606F25EdA61"
-      target="_blank"
-      class="btn"
-    >
-      Buy on PancakeSwap
-    </a>
+      <a href="#" class="btn">Buy on PancakeSwap</a>
+    </div>
   </section>
 
   <!-- TOKEN DETAILS -->
-  <section class="container">
-    <div class="card">
+  <section class="token">
+    <div class="container card reveal">
       <h2>Token Details</h2>
 
       <p><strong>Name:</strong> LUHAR</p>
@@ -37,15 +33,45 @@
       <p><strong>Network:</strong> BNB Smart Chain (BEP-20)</p>
       <p><strong>Decimals:</strong> 18</p>
       <p><strong>Total Supply:</strong> 1,000,000 LHR</p>
-
       <p class="contract">
-        <strong>Contract Address:</strong><br />
-        0xcF354400CA883F0C5bB2e7972B5D2606F25EdA61
+        <strong>Contract Address:</strong><br>
+        0xCF354400CA883F0C5bB2e7972B5D2606F25EdA61
       </p>
     </div>
   </section>
 
-  <!-- JS (ALWAYS LAST) -->
-  <script src="js/main.js?v=3"></script>
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container reveal">
+      <h2>About LUHAR</h2>
+      <p>
+        LUHAR (LHR) is a BEP-20 token built on BNB Smart Chain with a focus on
+        strength, transparency, and long-term community growth.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section class="buy">
+    <div class="container reveal">
+      <h2>How to Buy</h2>
+      <ol>
+        <li>Install MetaMask / Trust Wallet</li>
+        <li>Add BNB Smart Chain</li>
+        <li>Open PancakeSwap</li>
+        <li>Paste LUHAR contract address</li>
+        <li>Swap BNB for LHR</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Network: BNB Smart Chain</p>
+    <p>© 2026 LUHAR Coin. All rights reserved.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
 </body>
 </html>

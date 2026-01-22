@@ -40,20 +40,24 @@ body{
   font-weight:700;
 }
 
-/* HERO (SPACE FIX HERE) */
+/* HERO – HARD FIX */
 .hero{
   min-height:calc(100vh - 70px);
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:40px 60px;   /* 🔥 reduced from 90px */
-  gap:40px;
+  padding:40px 40px;
+  gap:20px;
 }
 
-/* LEFT */
+/* LEFT TEXT */
+.hero-left{
+  flex:1;
+}
+
 .hero-left h1{
   font-family:Cinzel,serif;
-  font-size:70px;      /* 🔥 slightly reduced */
+  font-size:64px;
   color:#ffb300;
 }
 
@@ -86,32 +90,37 @@ body{
   color:#ffb300;
 }
 
-/* RIGHT LOGO */
+/* RIGHT LOGO – MAIN FIX */
 .hero-right{
+  flex:1;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
+/* BIG PREMIUM LOGO */
 .logo-glow{
-  width:260px;        /* 🔥 smaller */
-  height:260px;
+  width:360px;            /* 🔥 BIG */
+  height:360px;
   border-radius:50%;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:radial-gradient(circle,#ffb30055 30%,transparent 65%);
+  background:radial-gradient(circle,#ffb30055 35%,transparent 70%);
   box-shadow:
-    0 0 35px rgba(255,180,0,.6),
-    0 0 70px rgba(255,140,0,.6),
-    inset 0 0 25px rgba(0,0,0,.9);
+    0 0 50px rgba(255,180,0,.7),
+    0 0 100px rgba(255,140,0,.6),
+    0 0 160px rgba(255,100,0,.4);
 }
 
+/* LOGO IMAGE */
 .logo-glow img{
-  width:70%;
-  height:70%;
+  width:72%;
+  height:72%;
   object-fit:contain;
   border-radius:50%;
+  background:#000;
+  padding:8px;
 }
 
 /* SECTIONS */
@@ -131,13 +140,6 @@ body{
   max-width:820px;
   margin:auto;
   opacity:.9;
-}
-
-/* GLASS */
-.glass{
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(12px);
-  border-radius:22px;
 }
 
 /* TOKEN */
@@ -163,7 +165,7 @@ body{
 }
 
 .card{
-  width:250px;
+  width:260px;
   background:rgba(255,255,255,.07);
   padding:24px;
   border-radius:18px;
@@ -184,10 +186,15 @@ footer{
   .hero{
     flex-direction:column;
     text-align:center;
-    padding:40px 20px;
+  }
+
+  .logo-glow{
+    width:300px;
+    height:300px;
+    margin-top:30px;
   }
 
   .hero-left h1{
-    font-size:56px;
+    font-size:52px;
   }
 }

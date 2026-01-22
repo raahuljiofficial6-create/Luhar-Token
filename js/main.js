@@ -1,5 +1,5 @@
 // Smooth reveal on scroll
-const elements = document.querySelectorAll('.card, .container');
+const elements = document.querySelectorAll(".reveal");
 
 const reveal = () => {
   elements.forEach(el => {
@@ -13,5 +13,5 @@ const reveal = () => {
   });
 };
 
-window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", reveal);

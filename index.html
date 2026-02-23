@@ -3,31 +3,794 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luhar (LHR) – The Next Big Cryptocurrency</title>
+<title>Luhar (LHR) – BEP-20 Token</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --gold: #f5c518;
-    --gold2: #ffaa00;
-    --orange: #ff6a00;
-    --dark: #050507;
-    --dark2: #0d0d14;
-    --dark3: #111120;
-    --card-bg: rgba(255,180,0,0.04);
-    --border-gold: rgba(245,197,24,0.3);
+    --gold: #D4A017;
+    --gold-light: #F5C842;
+    --gold-dark: #996515;
+    --orange: #E8720C;
+    --bg: #0A0A0A;
+    --bg-card: #111111;
+    --bg-card2: #1A1A1A;
+    --text: #E0E0E0;
+    --text-dim: #888;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--dark);
-    color: #e8d8a0;
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: 16px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    line-height: 1.6;
+    min-height: 100vh;
+    width: 100%;
   }
 
-  /* NAVBAR */
-  nav
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(212,160,23,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(232,114,12,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(212,160,23,0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Navbar */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212,160,23,0.15);
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--gold-light), var(--orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    letter-spacing: 0.5px;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+  .hamburger span {
+    width: 24px; height: 2px;
+    background: var(--gold);
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+
+  /* Sections */
+  section { position: relative; z-index: 1; }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem 3rem;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--bg), transparent);
+    pointer-events: none;
+  }
+
+  /* Particles */
+  .particles {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% { opacity: 0; transform: translateY(100vh) scale(0); }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+  }
+
+  .coin-container {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .coin-logo {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    background: radial-gradient(circle at 35% 35%, #F5D060, #D4A017, #996515);
+    box-shadow:
+      0 0 40px rgba(212,160,23,0.5),
+      0 0 80px rgba(212,160,23,0.2),
+      inset 0 0 30px rgba(0,0,0,0.3);
+    animation: coinGlow 3s ease-in-out infinite alternate;
+    position: relative;
+    border: 3px solid rgba(245,200,66,0.5);
+  }
+
+  .coin-logo::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(212,160,23,0.3);
+    animation: coinRing 4s linear infinite;
+  }
+
+  .coin-logo::after {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,160,23,0.15);
+    animation: coinRing 6s linear infinite reverse;
+  }
+
+  @keyframes coinGlow {
+    0% { box-shadow: 0 0 40px rgba(212,160,23,0.5), 0 0 80px rgba(212,160,23,0.2); }
+    100% { box-shadow: 0 0 60px rgba(212,160,23,0.7), 0 0 120px rgba(232,114,12,0.3); }
+  }
+
+  @keyframes coinRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .coin-text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: #1a1000;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.2);
+    letter-spacing: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #F5D060 0%, var(--gold) 30%, var(--orange) 60%, #F5D060 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+    margin-bottom: 0.8rem;
+    line-height: 1.1;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .hero .subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--orange));
+    color: #000;
+    box-shadow: 0 4px 25px rgba(212,160,23,0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 35px rgba(212,160,23,0.6);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  .btn-primary:hover::before { left: 100%; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid rgba(212,160,23,0.5);
+  }
+  .btn-outline:hover {
+    background: rgba(212,160,23,0.1);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(212,160,23,0.2);
+  }
+
+  /* Section Headers */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-header .line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--orange));
+    margin: 0.8rem auto 0;
+    border-radius: 3px;
+  }
+
+  /* Token Details */
+  .token-section {
+    padding: 5rem 1.5rem;
+  }
+
+  .token-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .token-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(212,160,23,0.12);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .token-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .token-card:hover {
+    border-color: rgba(212,160,23,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(212,160,23,0.1);
+  }
+
+  .token-card:hover::before { opacity: 1; }
+
+  .token-card .label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.4rem;
+  }
+
+  .token-card .value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold-light);
+  }
+
+  .contract-card {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contract-card .contract-info { flex: 1; min-width: 200px; }
+
+  .contract-addr {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(0.6rem, 1.5vw, 0.85rem);
+    word-break: break-all;
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  .copy-btn {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .copy-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(212,160,23,0.4);
+  }
+
+  /* About */
+  .about-section {
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  .about-content {
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid rgba(212,160,23,0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    line-height: 1.8;
+    color: var(--text);
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-content::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--orange), transparent);
+  }
+
+  .about-content span {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  /* How to Buy */
+  .buy-section {
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  .steps-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .step-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(212,160,23,0.1);
+    border-radius: 16px;
+    padding: 1.8rem;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .step-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,160,23,0.3);
+    box-shadow: 0 10px 35px rgba(212,160,23,0.1);
+  }
+
+  .step-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .step-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .step-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--bg-card);
+    border-top: 1px solid rgba(212,160,23,0.12);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .social-link {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,160,23,0.1);
+    border: 1px solid rgba(212,160,23,0.2);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+  }
+
+  .social-link:hover {
+    background: rgba(212,160,23,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(212,160,23,0.2);
+  }
+
+  .social-link svg { width: 20px; height: 20px; }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  /* Scroll animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav { padding: 0.7rem 1.2rem; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      padding: 1rem;
+      border-bottom: 1px solid rgba(212,160,23,0.15);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 0.6rem 0; }
+    .hamburger { display: flex; }
+
+    .coin-logo { width: 120px; height: 120px; font-size: 3rem; }
+    .coin-text { font-size: 1.2rem; }
+    .btn { padding: 0.75rem 1.3rem; font-size: 0.82rem; }
+    .about-content { padding: 1.8rem; }
+  }
+
+  @media (max-width: 400px) {
+    .btn-group { flex-direction: column; align-items: center; }
+    .btn { width: 100%; justify-content: center; }
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    z-index: 1000;
+    transition: transform 0.4s ease;
+    box-shadow: 0 5px 25px rgba(212,160,23,0.4);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">⚒ LUHAR</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#token">Token</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#buy">How to Buy</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="coin-container fade-in">
+    <div class="coin-logo">
+      <span class="coin-text">LHR</span>
+    </div>
+  </div>
+  <h1 class="fade-in">LUHAR (LHR)</h1>
+  <p class="subtitle fade-in">Decentralized BEP-20 Token on Binance Smart Chain</p>
+  <div class="btn-group fade-in">
+    <a href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xcF354400CA883F0C5bB2e7972B5D2606F25EdA61" target="_blank" class="btn btn-primary">🥞 Buy on PancakeSwap</a>
+    <a href="https://t.me/LuharCoin" target="_blank" class="btn btn-outline">✈️ Join Telegram</a>
+    <a href="https://x.com/LuharCoin" target="_blank" class="btn btn-outline">𝕏 Follow on X</a>
+  </div>
+</section>
+
+<!-- Token Details -->
+<section class="token-section" id="token">
+  <div class="section-header fade-in">
+    <h2>TOKEN DETAILS</h2>
+    <div class="line"></div>
+  </div>
+  <div class="token-grid">
+    <div class="token-card fade-in">
+      <div class="label">Token Name</div>
+      <div class="value">Luhar</div>
+    </div>
+    <div class="token-card fade-in">
+      <div class="label">Symbol</div>
+      <div class="value">LHR</div>
+    </div>
+    <div class="token-card fade-in">
+      <div class="label">Network</div>
+      <div class="value">BEP-20 (BSC)</div>
+    </div>
+    <div class="token-card fade-in">
+      <div class="label">Decimals</div>
+      <div class="value">18</div>
+    </div>
+    <div class="token-card fade-in">
+      <div class="label">Total Supply</div>
+      <div class="value">1,000,000 LHR</div>
+    </div>
+    <div class="token-card contract-card fade-in">
+      <div class="contract-info">
+        <div class="label">Contract Address</div>
+        <div class="contract-addr" id="contractAddr">0xcF354400CA883F0C5bB2e7972B5D2606F25EdA61</div>
+      </div>
+      <button class="copy-btn" onclick="copyContract()">📋 Copy</button>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="about">
+  <div class="section-header fade-in">
+    <h2>ABOUT LUHAR</h2>
+    <div class="line"></div>
+  </div>
+  <div class="about-content fade-in">
+    <span>Luhar (LHR)</span> is a community-driven BEP-20 token built on the Binance Smart Chain, designed with a vision of transparency, decentralization, and sustainable growth. Inspired by the strength and craftsmanship of the blacksmith, Luhar represents resilience and the power of community forging a new path in decentralized finance. With a fixed supply of 1,000,000 LHR, the token is engineered to foster trust and deliver long-term value to holders. Whether you're a seasoned crypto enthusiast or a newcomer, Luhar welcomes you to join a movement built on integrity and shared ambition. ⚒️🔥
+  </div>
+</section>
+
+<!-- How to Buy -->
+<section class="buy-section" id="buy">
+  <div class="section-header fade-in">
+    <h2>HOW TO BUY</h2>
+    <div class="line"></div>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card fade-in">
+      <div class="step-num">Step 1</div>
+      <span class="step-icon">🦊</span>
+      <h3>Install MetaMask or Trust Wallet</h3>
+    </div>
+    <div class="step-card fade-in">
+      <div class="step-num">Step 2</div>
+      <span class="step-icon">🔗</span>
+      <h3>Add Binance Smart Chain</h3>
+    </div>
+    <div class="step-card fade-in">
+      <div class="step-num">Step 3</div>
+      <span class="step-icon">💰</span>
+      <h3>Buy BNB</h3>
+    </div>
+    <div class="step-card fade-in">
+      <div class="step-num">Step 4</div>
+      <span class="step-icon">🥞</span>
+      <h3>Go to PancakeSwap</h3>
+    </div>
+    <div class="step-card fade-in">
+      <div class="step-num">Step 5</div>
+      <span class="step-icon">📋</span>
+      <h3>Paste Contract Address</h3>
+    </div>
+    <div class="step-card fade-in">
+      <div class="step-num">Step 6</div>
+      <span class="step-icon">🔄</span>
+      <h3>Swap BNB to LHR</h3>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-socials">
+    <a href="https://t.me/LuharCoin" target="_blank" class="social-link" title="Telegram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#D4A017" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 7.5a2.25 2.25 0 0 0 .126 4.073l3.9 1.205 1.672 5.325a1.5 1.5 0 0 0 2.388.662l2.4-1.96 4.098 3.065a2.25 2.25 0 0 0 3.517-1.272l3.2-15.21a2.25 2.25 0 0 0-3.78-2.603Z"/>
+      </svg>
+    </a>
+    <a href="https://x.com/LuharCoin" target="_blank" class="social-link" title="X (Twitter)">
+      <svg viewBox="0 0 24 24" fill="#D4A017">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+  </div>
+  <p class="footer-copy">© 2026 Luhar (LHR) – All Rights Reserved</p>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast">✅ Contract address copied!</div>
+
+<script>
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Copy contract
+  function copyContract() {
+    const addr = document.getElementById('contractAddr').textContent;
+    const ta = document.createElement('textarea');
+    ta.value = addr;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // Particles
+  (function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (6 + Math.random() * 10) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.width = p.style.height = (1 + Math.random() * 3) + 'px';
+      container.appendChild(p);
+    }
+  })();
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
